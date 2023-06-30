@@ -1,15 +1,32 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 import BackLink from 'components/BackLink';
 
-import { getMovieById } from 'services/api';
+import { fetchMovieDetails } from 'services/fetchApi';
 
 const MovieDetails = () => {
   const { id } = useParams();
-  const movie = getMovieById(id);
+  const [movie, setMovie] = useState(null);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
+
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const movieDetails = await fetchMovieDetails(id);
+        setMovie(movieDetails);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovie();
+  }, [id]);
+
+  if (!movie) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main>

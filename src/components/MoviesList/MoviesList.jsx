@@ -9,7 +9,7 @@ const MovieList = ({ movies }) => {
       {movies.map(movie => (
         <CardWrapper key={movie.id}>
           <Link to={`${movie.id}`} state={{ from: location }}>
-            <img src="https://via.placeholder.com/200x100" alt="" />
+            <img src={movie.poster_path} alt={movie.title} />
             <MovieTitle>{movie.title}</MovieTitle>
           </Link>
         </CardWrapper>

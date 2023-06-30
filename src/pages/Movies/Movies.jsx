@@ -1,14 +1,27 @@
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import MovieList from 'components/MoviesList';
 import SearchBox from 'components/SearchBox';
 
-import { getMovies } from 'services/api';
+import { searchMoviesByKeyword } from 'services/fetchApi';
 
 const Movies = () => {
-  const movies = getMovies();
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieTitle = searchParams.get('name') ?? '';
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const res = await searchMoviesByKeyword(movieTitle); // Pass movieTitle as argument to searchMoviesByKeyword
+        setMovies(res);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchMovies();
+  }, [movieTitle]); // Add movieTitle to dependency array
 
   const visibleMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(movieTitle.toLowerCase())
