@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[859],{859:function(i,e,t){t.r(e),t.d(e,{default:function(){return s}});var a=t(184),s=function(){return(0,a.jsxs)("main",{children:[(0,a.jsx)("h1",{children:"Welcome"}),(0,a.jsx)("img",{src:"https://via.placeholder.com/960x240",alt:""}),(0,a.jsx)("p",{children:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto, laboriosam placeat incidunt rem illum animi nemo quibusdam quia voluptatum voluptate."})]})}}}]);
-//# sourceMappingURL=859.599e23ec.chunk.js.map
