@@ -7,17 +7,30 @@ export const Container = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  border: 1px solid black;
-  border-radius: 4px;
-
+  position: relative;
   > a {
     text-decoration: none;
   }
 `;
 
+export const ImgPoster = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 export const MovieTitle = styled.h3`
-  padding: 4px;
-  margin-top: 8px;
-  margin-bottom: 0;
-  color: black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding-bottom: 10px;
+  color: white;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 `;

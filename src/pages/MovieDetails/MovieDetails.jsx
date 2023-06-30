@@ -2,8 +2,10 @@ import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 import BackLink from 'components/BackLink';
+import { ImgBgd } from './MovieDetails.styled';
 
 import { fetchMovieDetails } from 'services/fetchApi';
+import { IMG_BGD_URL } from 'constants/api';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -27,16 +29,17 @@ const MovieDetails = () => {
   if (!movie) {
     return <div>Loading...</div>;
   }
+  // const image = movie.backdrop_path
+  //   ? `${IMG_URL}${movie.backdrop_path}`
+  //   : `${IMG_URL}${movie.poster_path}`;
 
   return (
     <main>
       <BackLink to={backLinkHref}>Go back</BackLink>
-      <img src="https://via.placeholder.com/960x240" alt={movie.title} />
+      <ImgBgd src={`${IMG_BGD_URL}${movie.backdrop_path}`} alt={movie.title} />
       <div>
-        <h2>
-          Title - {movie.title} - {id}
-        </h2>
-        <p> Overview - {movie.overview}</p>
+        <h2>{movie.title}</h2>
+        <p>{movie.overview}</p>
         <p>Genres - {movie.genres.join(', ')}</p>
       </div>
 
