@@ -1,38 +1,42 @@
-import { Suspense, useRef } from 'react';
+import { Suspense } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
-// 1. http://localhost:3000/dogs?dogId=2
-// 2. http://localhost:3000/dogs/dog-2
-// 3. const backLinkLocationRef = useRef(location.state?.from ?? '/dogs');
-// 4. http://localhost:3000/dogs/dog-2/gallery
-// 5. backLinkLocationRef не меняется и все еще ведет на http://localhost:3000/dogs?dogId=2
+import BackLink from 'components/BackLink';
 
-const DogDetails = () => {
+import { getMovieById } from 'services/api';
+
+const MovieDetails = () => {
+  const { id } = useParams();
+  const movie = getMovieById(id);
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/dogs');
-  const { dogId } = useParams();
-
-  // useEffect(() => {
-  // HTTP запрос, если нужно
-  // }, [])
+  const backLinkHref = location.state?.from ?? '/movies';
 
   return (
-    <>
-      <h1>DogDetails: {dogId}</h1>
-      <Link to={backLinkLocationRef.current}>Back to the collection</Link>
+    <main>
+      <BackLink to={backLinkHref}>Go back</BackLink>
+      <img src="https://via.placeholder.com/960x240" alt={movie.title} />
+      <div>
+        <h2>
+          Title - {movie.title} - {id}
+        </h2>
+        <p> Overview - {movie.overview}</p>
+        <p>Genres - {movie.genres.join(', ')}</p>
+      </div>
+
       <ul>
+        <h3>Additional information</h3>
         <li>
-          <Link to="subbreeds">Subbreeds</Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="gallery">Gallery</Link>
+          <Link to="reviews">Reviews</Link>
         </li>
       </ul>
-      <Suspense fallback={<div>LOADING SUBPAGE...</div>}>
+      <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
-    </>
+    </main>
   );
 };
 
-export default DogDetails;
+export default MovieDetails;

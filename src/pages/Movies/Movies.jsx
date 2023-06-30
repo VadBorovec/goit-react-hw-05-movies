@@ -1,42 +1,30 @@
-import { useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
-const Dogs = () => {
-  const [dogs] = useState(['dog-1', 'dog-2', 'dog-3', 'dog-4', 'dog-5']);
-  const location = useLocation();
+import MovieList from 'components/MoviesList';
+import SearchBox from 'components/SearchBox';
+
+import { getMovies } from 'services/api';
+
+const Movies = () => {
+  const movies = getMovies();
   const [searchParams, setSearchParams] = useSearchParams();
-  const dogId = searchParams.get('dogId') ?? '';
+  const movieTitle = searchParams.get('name') ?? '';
 
-  // useEffect(() => {
-  // HTTP запрос, если нужно
-  // }, []);
+  const visibleMovies = movies.filter(movie =>
+    movie.title.toLowerCase().includes(movieTitle.toLowerCase())
+  );
 
-  const updateQueryString = evt => {
-    const dogIdValue = evt.target.value;
-    if (dogIdValue === '') {
-      return setSearchParams({});
-    }
-    setSearchParams({ dogId: dogIdValue });
+  const updateQueryString = name => {
+    const nextParams = name !== '' ? { name } : {};
+    setSearchParams(nextParams);
   };
 
-  const visibleDogs = dogs.filter(dog => dog.includes(dogId));
-
   return (
-    <div>
-      <input type="text" value={dogId} onChange={updateQueryString} />
-      <ul>
-        {visibleDogs.map(dog => {
-          return (
-            <li key={dog}>
-              <Link to={`${dog}`} state={{ from: location }}>
-                {dog}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <main>
+      <SearchBox value={movieTitle} onChange={updateQueryString} />
+      <MovieList movies={visibleMovies} />
+    </main>
   );
 };
 
-export default Dogs;
+export default Movies;
