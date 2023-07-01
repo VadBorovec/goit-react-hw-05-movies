@@ -2,7 +2,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/fetchApi';
 import { IMG_SMALL_URL } from 'constants/api';
-import { Container, CardWrapper, CastImage, CastTitle } from './Cast.styled';
+import {
+  Section,
+  Container,
+  CardWrapper,
+  CastImage,
+  CastTitle,
+  ErrorWraper,
+  ErrorHeader,
+  ErrorText,
+} from './Cast.styled';
 
 const Cast = () => {
   const { id } = useParams();
@@ -23,7 +32,7 @@ const Cast = () => {
   }, [id]);
 
   return (
-    <section>
+    <Section>
       <Container>
         {cast &&
           cast.map(
@@ -44,7 +53,13 @@ const Cast = () => {
             )
           )}
       </Container>
-    </section>
+      {!cast && (
+        <ErrorWraper>
+          <ErrorHeader>Sorry, no cast found.</ErrorHeader>
+          <ErrorText>Please try again later.</ErrorText>
+        </ErrorWraper>
+      )}
+    </Section>
   );
 };
 

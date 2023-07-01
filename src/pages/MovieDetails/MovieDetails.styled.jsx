@@ -13,7 +13,7 @@ export const MovieImg = styled.img`
 
 export const MovieWrapper = styled.div`
   margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   color: ${props => props.theme.colors.light};
   text-shadow: 1px 1px 0 ${props => props.theme.colors.accent};
