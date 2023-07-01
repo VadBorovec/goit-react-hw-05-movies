@@ -1,28 +1,36 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { SiThemoviedatabase } from 'react-icons/si';
 
-import { Container, Header, Logo, Link } from './Layout.styled';
+import {
+  Container,
+  Header,
+  Logo,
+  LogoText,
+  Navigation,
+  Link,
+  Footer,
+} from './Layout.styled';
 
 const Layout = () => {
   return (
     <Container>
       <Header>
         <Logo>
-          <span role="img" aria-label="computer icon">
-            💻
-          </span>{' '}
-          Get Movies?
+          <SiThemoviedatabase fill="white" size="25" />
+          <LogoText>Get Movies?</LogoText>
         </Logo>
-        <nav>
-          <Link to="/" end>
-            Home
-          </Link>
+        <Navigation>
+          <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
-        </nav>
+        </Navigation>
       </Header>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
+      <Footer>
+        <p>© {new Date().getFullYear()} Get Movies App. All rights reserved.</p>
+      </Footer>
     </Container>
   );
 };
