@@ -8,9 +8,6 @@ export const Container = styled.div`
 
 export const CardWrapper = styled.div`
   position: relative;
-  > a {
-    text-decoration: none;
-  }
 `;
 
 export const ImgPoster = styled.img`
@@ -27,7 +24,8 @@ export const MovieTitle = styled.h3`
   height: 100%;
   margin: 0;
   padding-bottom: 10px;
-  color: white;
+  color: ${props => props.theme.colors.white};
+  text-shadow: 1px 2px 0 ${props => props.theme.colors.accent};
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
   text-align: center;
   display: flex;

@@ -1,29 +1,43 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import { Section, CardWrapper, HeroImage, HeroTitle } from './Hero.styled';
 import { IMG_LARGE_URL } from 'constants/api';
 
 const Hero = ({ movie }) => {
   const location = useLocation();
-
   return (
-    <section>
-      <h1>Welcome</h1>
+    <Section>
       {movie && (
-        <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-          <img
-            src={
-              movie.backdrop_path
-                ? `${IMG_LARGE_URL}${movie.backdrop_path}`
-                : 'https://via.placeholder.com/960x540'
-            }
+        <>
+          <CardWrapper>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              <HeroImage
+                src={
+                  movie.backdrop_path
+                    ? `${IMG_LARGE_URL}${movie.backdrop_path}`
+                    : 'https://via.placeholder.com/960x540'
+                }
+                width="960"
+                height="540"
+                alt={movie.title}
+              />
+              <HeroTitle>{movie.title}</HeroTitle>
+            </Link>
+          </CardWrapper>
+        </>
+      )}
+      {!movie && (
+        <CardWrapper>
+          <HeroImage
+            src="https://via.placeholder.com/960x540"
             width="960"
             height="540"
-            alt={movie.title}
+            alt="Get Movies?"
           />
-          <h2>{movie.title}</h2>
-        </Link>
+          <HeroTitle>Welcome to Get Movie App</HeroTitle>
+        </CardWrapper>
       )}
-    </section>
+    </Section>
   );
 };
 

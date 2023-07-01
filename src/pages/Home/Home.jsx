@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import MovieList from 'components/MoviesList';
 import Hero from 'components/Hero';
+
 import { getTrendMoviesOfDay, getTrendMoviesOfWeek } from 'services/fetchApi';
 
 const Home = () => {
@@ -26,6 +28,7 @@ const Home = () => {
       try {
         const res = await getTrendMoviesOfWeek();
         setMovie(res);
+        console.log(res);
       } catch (error) {
         console.log(error.message);
       }

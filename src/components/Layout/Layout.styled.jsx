@@ -27,6 +27,7 @@ export const Logo = styled.div`
 export const LogoText = styled.span`
   padding-left: 0.4rem;
   color: ${props => props.theme.colors.white};
+  text-shadow: 1px 2px 0 ${props => props.theme.colors.accent};
 `;
 
 export const Navigation = styled.nav`

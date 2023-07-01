@@ -18,6 +18,7 @@ const MovieDetails = () => {
       try {
         const movieDetails = await fetchMovieDetails(id);
         setMovie(movieDetails);
+        console.log(movieDetails);
       } catch (error) {
         console.error(error);
       }
@@ -46,7 +47,10 @@ const MovieDetails = () => {
       <div>
         <h2>{movie.title}</h2>
         <p>{movie.overview}</p>
-        <p>Genres - {movie.genres.join(', ')}</p>
+        <h2>Genres</h2>
+        {movie.genres && (
+          <p>{movie.genres.map(({ name }) => name).join(', ')}</p>
+        )}
       </div>
 
       <ul>
