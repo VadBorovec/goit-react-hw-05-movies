@@ -71,15 +71,23 @@ the appropriate URL for your deployment.
 - Axios for making API requests.
 - The Movie Database (TMDb) API for movie data.
 
-## Dependencies
-
-List the dependencies used in your app and their versions.
-
 ## Contributing
 
-Provide guidelines on how others can contribute to your project.
+Contributions are welcome! If you find any issues or have suggestions for
+improvement, please feel free to open an issue or submit a pull request.
 
 ## License
 
 SThis project is licensed under the MIT License. See the LICENSE file for more
 information.
+
+## Acknowledgments
+
+This app was created as a homework assignment for the React module of a coding
+at Go IT Courses. Thanks to the creators and contributors of the open-source
+libraries used in this project.
+
+##
+
+If you have any questions or suggestions, feel free to contact me at
+vadborov@gmail.com.
