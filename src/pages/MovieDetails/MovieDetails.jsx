@@ -1,8 +1,20 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 
 import BackLink from 'components/BackLink';
-import { ImgBgd } from './MovieDetails.styled';
+import {
+  Section,
+  MovieImg,
+  MovieWrapper,
+  MovieTitle,
+  MovieGenres,
+  MovieRating,
+  MovieOverview,
+  InfoList,
+  InfoTitle,
+  InfoItem,
+  Link,
+} from './MovieDetails.styled';
 
 import { fetchMovieDetails } from 'services/fetchApi';
 import { IMG_LARGE_URL } from 'constants/api';
@@ -34,34 +46,37 @@ const MovieDetails = () => {
   return (
     <main>
       <BackLink to={backLinkHref.current}>Go back</BackLink>
-      <ImgBgd
-        src={
-          movie.backdrop_path
-            ? `${IMG_LARGE_URL}${movie.backdrop_path}`
-            : 'https://via.placeholder.com/960x540'
-        }
-        width="960"
-        height="540"
-        alt={movie.title}
-      />
-      <div>
-        <h2>{movie.title}</h2>
-        <p>{movie.overview}</p>
-        <h2>Genres</h2>
-        {movie.genres && (
-          <p>{movie.genres.map(({ name }) => name).join(', ')}</p>
-        )}
-      </div>
-
-      <ul>
-        <h3>Additional information</h3>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+      <Section>
+        <MovieImg
+          src={
+            movie.backdrop_path
+              ? `${IMG_LARGE_URL}${movie.backdrop_path}`
+              : 'https://via.placeholder.com/960x540'
+          }
+          width="960"
+          height="540"
+          alt={movie.title}
+        />
+        <MovieWrapper>
+          <MovieTitle>{movie.title}</MovieTitle>
+          {movie.genres && (
+            <MovieGenres>
+              Genres: {movie.genres.map(({ name }) => name).join(', ')}
+            </MovieGenres>
+          )}
+          <MovieRating>Rating: {movie.vote_average}</MovieRating>
+          <MovieOverview>{movie.overview}</MovieOverview>
+          <InfoTitle>Additional information</InfoTitle>
+          <InfoList>
+            <InfoItem>
+              <Link to="cast">Cast</Link>
+            </InfoItem>
+            <InfoItem>
+              <Link to="reviews">Reviews</Link>
+            </InfoItem>
+          </InfoList>
+        </MovieWrapper>
+      </Section>
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
