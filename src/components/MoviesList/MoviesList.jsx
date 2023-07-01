@@ -5,7 +5,7 @@ import {
   CardWrapper,
   ImgPoster,
   MovieTitle,
-  ErrorWraper,
+  ErrorWrapper,
   ErrorHeader,
   ErrorText,
 } from './MoviesList.styled';
@@ -38,10 +38,10 @@ const MovieList = ({ movies }) => {
           ))}
       </Container>
       {!movies && (
-        <ErrorWraper>
+        <ErrorWrapper>
           <ErrorHeader>Sorry, no movies found.</ErrorHeader>
           <ErrorText>Please try again later.</ErrorText>
-        </ErrorWraper>
+        </ErrorWrapper>
       )}
     </Section>
   );

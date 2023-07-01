@@ -5,6 +5,7 @@ import { IMG_LARGE_URL } from 'constants/api';
 
 const Hero = ({ movie }) => {
   const location = useLocation();
+
   return (
     <Section>
       {movie && (

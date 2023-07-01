@@ -7,7 +7,7 @@ import {
   ReviewsAuthor,
   ReviewsDate,
   ReviewsContent,
-  ErrorWraper,
+  ErrorWrapper,
   ErrorHeader,
   ErrorText,
 } from './Reviews.styled';
@@ -22,7 +22,7 @@ const Reviews = () => {
       try {
         const movieReviews = await getMovieReviews(id);
         setReviews(movieReviews);
-        console.log(movieReviews);
+        // console.log(movieReviews);
       } catch (error) {
         console.error(error);
       }
@@ -48,10 +48,10 @@ const Reviews = () => {
           ))}
       </ReviewsList>
       {reviews.length < 1 && (
-        <ErrorWraper>
+        <ErrorWrapper>
           <ErrorHeader>Sorry, no reviews found.</ErrorHeader>
           <ErrorText>Please try again later.</ErrorText>
-        </ErrorWraper>
+        </ErrorWrapper>
       )}
     </Section>
   );

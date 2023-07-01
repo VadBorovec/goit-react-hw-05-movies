@@ -36,7 +36,7 @@ export const ReviewsContent = styled.p`
   margin-bottom: 0.5rem;
 `;
 
-export const ErrorWraper = styled.div`
+export const ErrorWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;

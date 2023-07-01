@@ -69,3 +69,12 @@ export const Link = styled(NavLink)`
     background-color: ${props => props.theme.colors.button};
   }
 `;
+
+export const Loader = styled.div`
+  text-align: center;
+  padding: 0.8rem 0;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: ${props => props.theme.colors.light};
+  text-shadow: 1px 2px 0 ${props => props.theme.colors.accent};
+`;

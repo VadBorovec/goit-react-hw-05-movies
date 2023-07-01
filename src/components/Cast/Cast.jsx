@@ -8,7 +8,7 @@ import {
   CardWrapper,
   CastImage,
   CastTitle,
-  ErrorWraper,
+  ErrorWrapper,
   ErrorHeader,
   ErrorText,
 } from './Cast.styled';
@@ -22,7 +22,7 @@ const Cast = () => {
       try {
         const movieCast = await getMovieCredits(id);
         setCast(movieCast);
-        console.log(movieCast);
+        // console.log(movieCast);
       } catch (error) {
         console.error(error);
       }
@@ -54,10 +54,10 @@ const Cast = () => {
           )}
       </Container>
       {cast.length < 1 && (
-        <ErrorWraper>
+        <ErrorWrapper>
           <ErrorHeader>Sorry, no cast found.</ErrorHeader>
           <ErrorText>Please try again later.</ErrorText>
-        </ErrorWraper>
+        </ErrorWrapper>
       )}
     </Section>
   );

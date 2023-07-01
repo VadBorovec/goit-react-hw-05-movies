@@ -44,7 +44,7 @@ export const MovieTitle = styled.h3`
   justify-content: center;
 `;
 
-export const ErrorWraper = styled.div`
+export const ErrorWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;

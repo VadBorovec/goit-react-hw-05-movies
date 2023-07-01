@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import MovieList from 'components/MoviesList';
 import SearchBox from 'components/SearchBox';
 
-import { searchMoviesByKeyword } from 'services/fetchApi';
+import { searchMovies } from 'services/fetchApi';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -12,15 +12,16 @@ const Movies = () => {
   const movieTitle = searchParams.get('name') ?? '';
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const getMovies = async () => {
       try {
-        const res = await searchMoviesByKeyword(movieTitle);
+        const res = await searchMovies(movieTitle);
         setMovies(res);
+        // console.log(res);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchMovies();
+    getMovies();
   }, [movieTitle]);
 
   const visibleMovies = movies.filter(movie =>

@@ -7,8 +7,8 @@ import {
   URL_SEARCH_MOVIE,
 } from 'constants/api';
 
-// Function to fetch trending movies of the day from TMDB API
-export async function getTrendMoviesOfDay() {
+// Function to fetch trending movies of the day
+export async function getTrending() {
   try {
     const response = await axios.get(
       `${BASE_URL}${URL_TREND_DAY}?api_key=${API_KEY}`
@@ -19,8 +19,8 @@ export async function getTrendMoviesOfDay() {
   }
 }
 
-// Function to fetch trending movies of the week from TMDB API
-export async function getTrendMoviesOfWeek() {
+// Function to fetch random trending movie of the week
+export async function getRandomMovie() {
   try {
     const response = await axios.get(
       `${BASE_URL}${URL_TREND_WEEK}?api_key=${API_KEY}`
@@ -33,20 +33,8 @@ export async function getTrendMoviesOfWeek() {
   }
 }
 
-// Function to fetch movie details from TMDB API
-export async function fetchMovieDetails(movieId) {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Function to search movies by keyword from TMDB API
-export async function searchMoviesByKeyword(keyword) {
+// Function to search movies by keyword
+export async function searchMovies(keyword) {
   try {
     const response = await axios.get(
       `${BASE_URL}${URL_SEARCH_MOVIE}?api_key=${API_KEY}&query=${keyword}`
@@ -57,6 +45,19 @@ export async function searchMoviesByKeyword(keyword) {
   }
 }
 
+// Function to fetch movie details
+export async function getMovieDetails(movieId) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Function to fetch movie credits
 export async function getMovieCredits(movieId) {
   try {
     const response = await axios.get(
@@ -69,6 +70,7 @@ export async function getMovieCredits(movieId) {
   }
 }
 
+// Function to fetch movie reviews
 export async function getMovieReviews(movieId) {
   try {
     const response = await axios.get(

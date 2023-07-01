@@ -10,6 +10,7 @@ import {
   Navigation,
   Link,
   Footer,
+  Loader,
 } from './Layout.styled';
 
 const Layout = () => {
@@ -25,7 +26,7 @@ const Layout = () => {
           <Link to="/movies">Movies</Link>
         </Navigation>
       </Header>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader>Loading...</Loader>}>
         <Outlet />
       </Suspense>
       <Footer>

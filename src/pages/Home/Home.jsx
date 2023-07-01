@@ -4,41 +4,42 @@ import { useLocation } from 'react-router-dom';
 import MovieList from 'components/MoviesList';
 import Hero from 'components/Hero';
 
-import { getTrendMoviesOfDay, getTrendMoviesOfWeek } from 'services/fetchApi';
+import { getTrending, getRandomMovie } from 'services/fetchApi';
 
 const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
-  const [movie, setMovie] = useState(null);
+  const [randomMovie, setRandomMovie] = useState(null);
 
   useEffect(() => {
-    const fetchDayMovies = async () => {
+    const getMovies = async () => {
       try {
-        const res = await getTrendMoviesOfDay();
+        const res = await getTrending();
         setMovies(res);
+        // console.log(res);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchDayMovies();
+    getMovies();
   }, []);
 
   useEffect(() => {
-    const fetchWeekMovies = async () => {
+    const getRandom = async () => {
       try {
-        const res = await getTrendMoviesOfWeek();
-        setMovie(res);
-        console.log(res);
+        const res = await getRandomMovie();
+        setRandomMovie(res);
+        // console.log(res);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchWeekMovies();
+    getRandom();
   }, []);
 
   return (
     <main>
-      <Hero movie={movie} location={location} />
+      <Hero movie={randomMovie} location={location} />
       <MovieList movies={movies} location={location} />
     </main>
   );
