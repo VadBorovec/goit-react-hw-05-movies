@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 export const StyledLink = styled(Link)`
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 8px 0;
-  color: black;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+  color: ${props => props.theme.colors.light};
   text-decoration: none;
   font-weight: 500;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 
   :hover {
-    color: orangered;
+    color: ${props => props.theme.colors.button};
   }
 `;

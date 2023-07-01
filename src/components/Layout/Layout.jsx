@@ -17,7 +17,7 @@ const Layout = () => {
     <Container>
       <Header>
         <Logo>
-          <SiThemoviedatabase fill="white" size="25" />
+          <SiThemoviedatabase fill="#f2f2f2" size="25" />
           <LogoText>Get Movies?</LogoText>
         </Logo>
         <Navigation>

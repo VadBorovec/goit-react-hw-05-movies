@@ -26,7 +26,7 @@ export const Logo = styled.div`
 `;
 export const LogoText = styled.span`
   padding-left: 0.4rem;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.light};
   text-shadow: 1px 2px 0 ${props => props.theme.colors.accent};
 `;
 
@@ -37,7 +37,7 @@ export const Link = styled(NavLink)`
   padding: 0.5rem 1rem;
   border-radius: 4px;
   text-decoration: none;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.light};
   font-weight: 500;
 
   &.active {
@@ -52,5 +52,5 @@ export const Footer = styled.footer`
   margin: 1rem 0;
   border-top: 1px solid black;
   font-size: 1rem;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.light};
 `;

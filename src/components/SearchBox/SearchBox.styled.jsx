@@ -35,8 +35,8 @@ export const Input = styled.input`
 
 export const Icon = styled(HiSearch)`
   fill: ${props => props.theme.colors.button};
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   position: absolute;
   top: 50%;
   right: 8px;
