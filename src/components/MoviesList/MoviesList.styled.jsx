@@ -1,8 +1,13 @@
 import styled from '@emotion/styled';
 
+export const Section = styled.section`
+  margin-bottom: 1rem;
+  padding: 1rem;
+`;
+
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
   gap: 16px;
 `;
 
@@ -31,4 +36,25 @@ export const MovieTitle = styled.h3`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+`;
+
+export const ErrorWraper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+`;
+
+export const ErrorHeader = styled.h2`
+  color: ${props => props.theme.colors.white};
+  text-shadow: 2px 4px 0 ${props => props.theme.colors.accent};
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+`;
+
+export const ErrorText = styled.p`
+  color: ${props => props.theme.colors.light};
+  font-size: 18px;
 `;
