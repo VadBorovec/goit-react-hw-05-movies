@@ -8,11 +8,17 @@ export const Section = styled.section`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  gap: 16px;
+  gap: 1rem;
 `;
 
 export const CardWrapper = styled.div`
   position: relative;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 4px 8px 4px rgba(211, 47, 47, 0.5);
+    transform: translateY(-2px);
+  }
 `;
 
 export const ImgPoster = styled.img`
@@ -28,7 +34,7 @@ export const MovieTitle = styled.h3`
   width: 100%;
   height: 100%;
   margin: 0;
-  padding-bottom: 10px;
+  padding-bottom: 0.8rem;
   color: ${props => props.theme.colors.white};
   text-shadow: 1px 2px 0 ${props => props.theme.colors.accent};
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
@@ -50,11 +56,11 @@ export const ErrorWraper = styled.div`
 export const ErrorHeader = styled.h2`
   color: ${props => props.theme.colors.white};
   text-shadow: 2px 4px 0 ${props => props.theme.colors.accent};
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
 `;
 
 export const ErrorText = styled.p`
   color: ${props => props.theme.colors.light};
-  font-size: 18px;
+  font-size: 1.2rem;
 `;

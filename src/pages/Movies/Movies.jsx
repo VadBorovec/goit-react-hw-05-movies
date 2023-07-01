@@ -14,14 +14,14 @@ const Movies = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await searchMoviesByKeyword(movieTitle); // Pass movieTitle as argument to searchMoviesByKeyword
+        const res = await searchMoviesByKeyword(movieTitle);
         setMovies(res);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchMovies();
-  }, [movieTitle]); // Add movieTitle to dependency array
+  }, [movieTitle]);
 
   const visibleMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(movieTitle.toLowerCase())
