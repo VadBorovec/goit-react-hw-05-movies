@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import MovieList from 'components/MoviesList';
+import Hero from 'components/Hero';
 import { getTrendMoviesOfDay, getTrendMoviesOfWeek } from 'services/fetchApi';
-import { IMG_LARGE_URL } from 'constants/api';
 
 const Home = () => {
   const location = useLocation();
@@ -35,22 +35,7 @@ const Home = () => {
 
   return (
     <main>
-      <h1>Welcome</h1>
-      {movie && (
-        <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-          <img
-            src={
-              movie.backdrop_path
-                ? `${IMG_LARGE_URL}${movie.backdrop_path}`
-                : 'https://via.placeholder.com/960x540'
-            }
-            width="960"
-            height="540"
-            alt={movie.title}
-          />
-          <h2>{movie.title}</h2>
-        </Link>
-      )}
+      <Hero movie={movie} location={location} />
       <MovieList movies={movies} location={location} />
     </main>
   );

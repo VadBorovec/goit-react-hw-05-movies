@@ -8,7 +8,7 @@ const Movies = lazy(() => import('pages/Movies'));
 const Cast = lazy(() => import('components/Cast'));
 const Reviews = lazy(() => import('components/Reviews'));
 
-export const App = () => {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -22,3 +22,5 @@ export const App = () => {
     </Routes>
   );
 };
+
+export default App;
