@@ -55,17 +55,25 @@ export async function searchMoviesByKeyword(keyword) {
   }
 }
 
-// export const MovieDatabaseAPI = () => {
+export async function getMovieCredits(movieId) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data.cast;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 
-//   // Function to fetch detail info from TMDB API
-//   async fetchMovieDetails(movieId) {
-//     try {
-//       const response = await axios.get(
-//         `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-//       );
-//       return response.data;
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-// }
+export async function getMovieReviews(movieId) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}

@@ -6,13 +6,10 @@ import {
   MovieTitle,
 } from './MoviesList.styled';
 
-import { IMG_POSTER_URL } from 'constants/api';
+import { IMG_MEDIUM_URL } from 'constants/api';
 
 const MovieList = ({ movies }) => {
   const location = useLocation();
-  // const image = movie.backdrop_path
-  //   ? `${IMG_URL}${movie.backdrop_path}`
-  //   : `${IMG_URL}${movie.poster_path}`;
 
   return (
     <Container>
@@ -20,9 +17,13 @@ const MovieList = ({ movies }) => {
         <CardWrapper key={movie.id}>
           <Link to={`${movie.id}`} state={{ from: location }}>
             <ImgPoster
-              src={`${IMG_POSTER_URL}${movie.poster_path}`}
-              width="224"
-              height="335"
+              src={
+                movie.poster_path
+                  ? `${IMG_MEDIUM_URL}${movie.poster_path}`
+                  : 'https://via.placeholder.com/200x300'
+              }
+              width="200"
+              height="300"
               alt={movie.title}
             />
             <MovieTitle>{movie.title}</MovieTitle>

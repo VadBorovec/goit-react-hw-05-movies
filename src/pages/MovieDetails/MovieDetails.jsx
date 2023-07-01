@@ -5,7 +5,7 @@ import BackLink from 'components/BackLink';
 import { ImgBgd } from './MovieDetails.styled';
 
 import { fetchMovieDetails } from 'services/fetchApi';
-import { IMG_BGD_URL } from 'constants/api';
+import { IMG_LARGE_URL } from 'constants/api';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -29,14 +29,20 @@ const MovieDetails = () => {
   if (!movie) {
     return <div>Loading...</div>;
   }
-  // const image = movie.backdrop_path
-  //   ? `${IMG_URL}${movie.backdrop_path}`
-  //   : `${IMG_URL}${movie.poster_path}`;
 
   return (
     <main>
       <BackLink to={backLinkHref}>Go back</BackLink>
-      <ImgBgd src={`${IMG_BGD_URL}${movie.backdrop_path}`} alt={movie.title} />
+      <ImgBgd
+        src={
+          movie.poster_path
+            ? `${IMG_LARGE_URL}${movie.backdrop_path}`
+            : 'https://via.placeholder.com/960x540'
+        }
+        width="960"
+        height="540"
+        alt={movie.title}
+      />
       <div>
         <h2>{movie.title}</h2>
         <p>{movie.overview}</p>

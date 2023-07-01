@@ -1,7 +1,9 @@
 export const API_KEY = 'e228a48ce493c266d1ac0e25cdb4d9c4';
 export const BASE_URL = 'https://api.themoviedb.org/3/';
-export const IMG_BGD_URL = 'https://image.tmdb.org/t/p/original/';
-export const IMG_POSTER_URL = 'https://image.tmdb.org/t/p/w500/';
+
+export const IMG_SMALL_URL = 'https://image.tmdb.org/t/p/w200/';
+export const IMG_MEDIUM_URL = 'https://image.tmdb.org/t/p/w500/';
+export const IMG_LARGE_URL = 'https://image.tmdb.org/t/p/original/';
 
 export const URL_TREND_DAY = 'trending/movie/day';
 export const URL_TREND_WEEK = 'trending/movie/week';
