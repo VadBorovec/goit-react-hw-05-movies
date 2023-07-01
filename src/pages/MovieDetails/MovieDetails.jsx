@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 import BackLink from 'components/BackLink';
@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -32,10 +32,10 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref}>Go back</BackLink>
+      <BackLink to={backLinkHref.current}>Go back</BackLink>
       <ImgBgd
         src={
-          movie.poster_path
+          movie.backdrop_path
             ? `${IMG_LARGE_URL}${movie.backdrop_path}`
             : 'https://via.placeholder.com/960x540'
         }

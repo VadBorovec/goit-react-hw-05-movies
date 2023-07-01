@@ -25,7 +25,9 @@ export async function getTrendMoviesOfWeek() {
     const response = await axios.get(
       `${BASE_URL}${URL_TREND_WEEK}?api_key=${API_KEY}`
     );
-    return response.data.results;
+    const movies = response.data.results;
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    return movies[randomIndex];
   } catch (error) {
     console.error(error);
   }

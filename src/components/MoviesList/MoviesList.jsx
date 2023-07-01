@@ -15,7 +15,7 @@ const MovieList = ({ movies }) => {
     <Container>
       {movies.map(movie => (
         <CardWrapper key={movie.id}>
-          <Link to={`${movie.id}`} state={{ from: location }}>
+          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
             <ImgPoster
               src={
                 movie.poster_path
