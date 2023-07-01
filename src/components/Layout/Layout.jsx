@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SiThemoviedatabase } from 'react-icons/si';
 
+import WelcomeMessage from 'components/WelcomeMessage';
+
 import {
   Container,
   Header,
@@ -16,6 +18,7 @@ import {
 const Layout = () => {
   return (
     <Container>
+      <WelcomeMessage />
       <Header>
         <Logo>
           <SiThemoviedatabase fill="#f2f2f2" size="25" />
