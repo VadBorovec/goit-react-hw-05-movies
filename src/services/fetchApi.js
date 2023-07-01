@@ -77,5 +77,6 @@ export async function getMovieReviews(movieId) {
     return response.data.results;
   } catch (error) {
     console.error(error);
+    return [];
   }
 }

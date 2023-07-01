@@ -1,5 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+  Section,
+  ReviewsList,
+  ReviewsItem,
+  ReviewsAuthor,
+  ReviewsDate,
+  ReviewsContent,
+  ErrorWraper,
+  ErrorHeader,
+  ErrorText,
+} from './Reviews.styled';
 import { getMovieReviews } from 'services/fetchApi';
 
 const Reviews = () => {
@@ -21,22 +32,28 @@ const Reviews = () => {
   }, [id]);
 
   return (
-    <section>
-      <ul>
+    <Section>
+      <ReviewsList>
         {reviews &&
           reviews.map(({ id, author, content, updated_at, url }) => (
-            <li key={id}>
-              <h2>{author}</h2>
-              <h3>
+            <ReviewsItem key={id}>
+              <ReviewsAuthor>{author}</ReviewsAuthor>
+              <ReviewsDate>
                 <a href={url} target="_blank" rel="noopener noreferrer">
                   {updated_at}
                 </a>
-              </h3>
-              <p>{content}</p>
-            </li>
+              </ReviewsDate>
+              <ReviewsContent>{content}</ReviewsContent>
+            </ReviewsItem>
           ))}
-      </ul>
-    </section>
+      </ReviewsList>
+      {reviews.length < 1 && (
+        <ErrorWraper>
+          <ErrorHeader>Sorry, no reviews found.</ErrorHeader>
+          <ErrorText>Please try again later.</ErrorText>
+        </ErrorWraper>
+      )}
+    </Section>
   );
 };
 

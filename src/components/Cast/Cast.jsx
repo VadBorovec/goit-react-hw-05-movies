@@ -53,7 +53,7 @@ const Cast = () => {
             )
           )}
       </Container>
-      {!cast && (
+      {cast.length < 1 && (
         <ErrorWraper>
           <ErrorHeader>Sorry, no cast found.</ErrorHeader>
           <ErrorText>Please try again later.</ErrorText>
