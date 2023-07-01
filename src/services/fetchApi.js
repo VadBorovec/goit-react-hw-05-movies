@@ -72,7 +72,7 @@ export async function getMovieReviews(movieId) {
     const response = await axios.get(
       `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
     );
-    return response.data;
+    return response.data.results;
   } catch (error) {
     console.error(error);
   }
