@@ -22,6 +22,7 @@ const SearchBox = ({ value, onChange }) => {
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * funnyMessages.length);
     setRandomFunnyMessage(funnyMessages[randomIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
